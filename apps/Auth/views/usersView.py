@@ -34,6 +34,7 @@ class UserCreateView(views.APIView):
         return Response(tokenSerializer.validated_data, status=status.HTTP_201_CREATED)
 
 class UserDetailView(generics.RetrieveAPIView):
+    # search for user with pk given, HTTP_404 if not found
     queryset = User.objects.all()
     serializer_class = UserSerializer
 

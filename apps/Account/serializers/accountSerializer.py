@@ -1,24 +1,26 @@
 from rest_framework import serializers
 from apps.Account.models import Account
+from django.shortcuts import get_object_or_404
 
 class AccountSerializer(serializers.ModelSerializer):
     class Meta:
         model = Account
         fields = '__all__'
 
-    def update_balance(self, valid_data):
-        account = Account.objects.get(id_client=valid_data["id_client"])
+    def update_balance(valid_data):
+        account = get_object_or_404(Account, id_client=valid_data["id_client"])
         account.balance += valid_data["balance"]
         account.save()
-        return account
+        return account.this_account()
     
-    def update_fields(self, valid_data):
-        account = Account.objects.get(id_client=valid_data["id_client"])
+    def update_fields(valid_data):
+        # eficient filter, this return 404 if not found the account
+        account = get_object_or_404(Account, id_client=valid_data["id_client"])
         account.city = valid_data["city"]
         account.phone = valid_data["phone"]
         account.ages = valid_data["ages"]
         account.save()
-        return account
+        return account.this_account()
 
 
     def to_representation(self, obj):

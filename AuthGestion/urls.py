@@ -19,12 +19,12 @@ from apps.Auth import views as Auth
 from apps.Account import views as Account
 
 urlpatterns = [
-    path('login/', TokenObtainPairView.as_view()),
-    path('refresh/', TokenRefreshView.as_view()),
-    path('verifyToken/', Auth.VerifyTokenView.as_view()),
-    path('user/', Auth.UserCreateView.as_view()),
-    path('user/<int:pk>/', Auth.UserDetailView.as_view()),
-    path('account/', Account.accountCreate.as_view()),
-    path('account/<int:pk>/', Account.accountDetail.as_view()),
-    path('account/update/<str:type>/', Account.accountDetail.as_view()),
+    path('login/', TokenObtainPairView.as_view()),                      # login
+    path('refresh/', TokenRefreshView.as_view()),                       #  give a new acces token
+    path('verifyToken/', Auth.VerifyTokenView.as_view()),               # return id_client
+    path('user/', Auth.UserCreateView.as_view()),                       # create a new user
+    path('user/<int:pk>/', Auth.UserDetailView.as_view()),              # retrieve a user with the pk
+    path('account/', Account.accountCreate.as_view()),                  # create a new account
+    path('account/<int:pk>/', Account.accountDetail.as_view()),         # retrieve a account with the pk
+    path('account/update/<str:type>/', Account.accountUpdate.as_view()),# update account
 ]
