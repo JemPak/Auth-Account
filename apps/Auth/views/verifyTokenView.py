@@ -10,6 +10,12 @@ from rest_framework_simplejwt.serializers import TokenVerifySerializer
 class VerifyTokenView(TokenVerifyView):
 
     def post(self, request, *args, **kwargs):
+        """ Override post method to verify current token
+        parameter: 
+            request.data: info with token for verify, send by user
+        return:
+            USERID: if token is valid, return current USERID, bad case 401 UNAUTHORIZED
+        """
         serializer = TokenVerifySerializer(data=request.data)
         tokenBackend = TokenBackend(algorithm=settings.SIMPLE_JWT['ALGORITHM'])
         try:

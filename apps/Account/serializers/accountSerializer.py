@@ -8,13 +8,29 @@ class AccountSerializer(serializers.ModelSerializer):
         fields = '__all__'
 
     def update_balance(valid_data):
+        """ method for update balance for user account
+        parameters:
+            valid_data["id_cliente"]: ID account
+            valid_data["balace"]: value of balance for increase in account
+        return:
+            account.this_account(): account representation
+        """
         account = get_object_or_404(Account, id_client=valid_data["id_client"])
         account.balance += valid_data["balance"]
         account.save()
         return account.this_account()
     
     def update_fields(valid_data):
-        # eficient filter, this return 404 if not found the account
+        """ method for update fields for user account
+        parameters:
+            valid_data["id_cliente"]: ID account
+            valid_data["city"]: value of city to change
+            valid_data["phone"]: value of phone to change
+            valid_data["ages"]: value of ages to change
+        return:
+            account.this_account(): account representation
+        """
+        # eficient filter, return 404 if not found the account
         account = get_object_or_404(Account, id_client=valid_data["id_client"])
         account.city = valid_data["city"]
         account.phone = valid_data["phone"]

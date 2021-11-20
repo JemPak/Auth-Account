@@ -60,3 +60,11 @@ env
 
 *.sqlite3
 .sqlite3/
+
+# Dockerfile
+/ Dockerfile
+Dockerfile/
+.Dockerfile
+.Dockerfile/
+Dockerfile
+*Dockerfile

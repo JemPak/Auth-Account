@@ -1,5 +1,4 @@
 from django.db import models
-from apps.Auth.models import User
 
 class Account(models.Model):
     id_account    = models.BigAutoField(primary_key=True)
@@ -11,7 +10,8 @@ class Account(models.Model):
     balance       = models.BigIntegerField("Balance", default=0)
 
     def this_account(self):
-        return {
+        # Recursive method to get the data account
+        return {                            
             "id_account": self.id_account,
             "id_client": self.id_client,
             "city": self.city,

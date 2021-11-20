@@ -32,12 +32,12 @@ class accountDetail(generics.RetrieveAPIView):
 
 
 class accountUpdate(generics.UpdateAPIView):
-    serializer_class = AccountSerializer # impor serializer class
+    serializer_class = AccountSerializer # import serializer class
 
     def put(self, request, *args, **kwargs):
         """ Override put method to update a value in the account
         parameters:
-            **kwargs: (key value), the kwargs is used for define the type to update, it can be:
+            **kwargs: (key value), the kwargs is used to define update type, it can be:
                 update_balance: update only the balance field, add the new value balance 
                 update_fields: update the fiels (ages, city, phone)
             request.data: dict with the values to update

@@ -7,6 +7,9 @@ class UserSerializer(serializers.ModelSerializer):
         fields = '__all__'
 
     def to_representation(self, obj):
+        """
+            representation obj to return 
+        """
         user = User.objects.get(id_user=obj.id_user)
         return {
                 'id_client': user.id_user, 
