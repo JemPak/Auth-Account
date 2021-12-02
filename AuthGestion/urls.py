@@ -20,7 +20,7 @@ from apps.Account import views as Account
 
 urlpatterns = [
     path('login/', TokenObtainPairView.as_view()),                      # login
-    path('refresh/', TokenRefreshView.as_view()),                       #  give a new acces token
+    path('refresh/', TokenRefreshView.as_view()),                       #  give a new access token
     path('verifyToken/', Auth.VerifyTokenView.as_view()),               # return id_client
     path('user/', Auth.UserCreateView.as_view()),                       # create a new user
     path('user/<int:pk>/', Auth.UserDetailView.as_view()),              # retrieve a user with the pk
